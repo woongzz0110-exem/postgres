@@ -26,19 +26,31 @@
 /*
  * Mode mask for data directory permissions that also allows group read/execute.
  */
-#define PG_MODE_MASK_GROUP			(S_IWGRP | S_IRWXO)
+// #define PG_MODE_MASK_GROUP			(S_IWGRP | S_IRWXO)
+
+/*
+ * want: Mode mask for data directory permissions that also allows group read/write/execute.
+ */
+#define PG_MODE_MASK_GROUP			(S_IWGRP | S_IRGRP | S_IRWXO)
+ 
 
 /* Default mode for creating directories */
 #define PG_DIR_MODE_OWNER			S_IRWXU
 
 /* Mode for creating directories that allows group read/execute */
-#define PG_DIR_MODE_GROUP			(S_IRWXU | S_IRGRP | S_IXGRP)
+// #define PG_DIR_MODE_GROUP			(S_IRWXU | S_IRGRP | S_IXGRP)
+
+/* want:  Mode for creating directories that allows group read/write/execute */
+#define PG_DIR_MODE_GROUP			(S_IRWXU | S_IRGRP | S_IWGRP | S_IXGRP)
 
 /* Default mode for creating files */
 #define PG_FILE_MODE_OWNER		    (S_IRUSR | S_IWUSR)
 
 /* Mode for creating files that allows group read */
-#define PG_FILE_MODE_GROUP			(S_IRUSR | S_IWUSR | S_IRGRP)
+// #define PG_FILE_MODE_GROUP			(S_IRUSR | S_IWUSR | S_IRGRP)
+
+/* want: Mode for creating files that allows group read/write */
+#define PG_FILE_MODE_GROUP			(S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)
 
 /* Modes for creating directories and files in the data directory */
 extern int	pg_dir_create_mode;
