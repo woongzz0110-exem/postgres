@@ -2680,14 +2680,18 @@ create_data_directory(void)
 				   pg_data);
 			fflush(stdout);
 
-			if (chmod(pg_data, pg_dir_create_mode) != 0)
-			{
-				pg_log_error("could not change permissions of directory \"%s\": %m",
-							 pg_data);
-				exit(1);
-			}
-			else
-				check_ok();
+			printf(_("skip fixing permissions on existing directory %s ... "),
+				   pg_data);
+			fflush(stdout);
+
+			// if (chmod(pg_data, pg_dir_create_mode) != 0)
+			// {
+			// 	pg_log_error("could not change permissions of directory \"%s\": %m",
+			// 				 pg_data);
+			// 	exit(1);
+			// }
+			// else
+			// 	check_ok();
 
 			found_existing_pgdata = true;
 			break;
@@ -2763,14 +2767,18 @@ create_xlog_or_symlink(void)
 					   xlog_dir);
 				fflush(stdout);
 
-				if (chmod(xlog_dir, pg_dir_create_mode) != 0)
-				{
-					pg_log_error("could not change permissions of directory \"%s\": %m",
-								 xlog_dir);
-					exit(1);
-				}
-				else
-					check_ok();
+				printf(_("skip fixing permissions on existing directory %s ... "),
+					   xlog_dir);
+				fflush(stdout);
+
+				// if (chmod(xlog_dir, pg_dir_create_mode) != 0)
+				// {
+				// 	pg_log_error("could not change permissions of directory \"%s\": %m",
+				// 				 xlog_dir);
+				// 	exit(1);
+				// }
+				// else
+				// 	check_ok();
 
 				found_existing_xlogdir = true;
 				break;
