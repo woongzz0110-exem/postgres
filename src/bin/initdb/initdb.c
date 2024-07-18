@@ -631,16 +631,16 @@ get_id(void)
 {
 	const char *username;
 
-#ifndef WIN32
-	if (geteuid() == 0)			/* 0 is root's uid */
-	{
-		pg_log_error("cannot be run as root");
-		fprintf(stderr,
-				_("Please log in (using, e.g., \"su\") as the (unprivileged) user that will\n"
-				  "own the server process.\n"));
-		exit(1);
-	}
-#endif
+// #ifndef WIN32
+// 	if (geteuid() == 0)			/* 0 is root's uid */
+// 	{
+// 		pg_log_error("cannot be run as root");
+// 		fprintf(stderr,
+// 				_("Please log in (using, e.g., \"su\") as the (unprivileged) user that will\n"
+// 				  "own the server process.\n"));
+// 		exit(1);
+// 	}
+// #endif
 
 	username = get_user_name_or_exit(progname);
 
